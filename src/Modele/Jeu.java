@@ -1,13 +1,14 @@
 package Modele;
 import java.awt.Point;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Observable;
 
 //TODO peut être deplacer l'observable
 public class Jeu extends Observable implements Runnable {
 
-    public static final int SIZE_X = 20;
-    public static final int SIZE_Y = 20;
+    public static final int SIZE_X = 15;
+    public static final int SIZE_Y = 15;
     private int pause = 200; // période de rafraichissement
 
     // TODO never used for now
@@ -17,6 +18,7 @@ public class Jeu extends Observable implements Runnable {
     private Personnage personnage;
 
     public Jeu() {
+        this.personnage = new Personnage(this);
         chargerCarte();
     }
 
@@ -30,16 +32,79 @@ public class Jeu extends Observable implements Runnable {
 
     // TODO à faire, carte de test actuellement
     public void chargerCarte(){
-        Entite vide = new Vide(this);
+        File carte = new File("C:\\Users\\alexa\\IdeaProjects\\Gyromite\\Ressources\\carte.txt");
         map = new Entite[SIZE_X][SIZE_Y];
-        for (int i  = 0;i<SIZE_X;i++)
-            for (int j  = 0;j<SIZE_Y;j++){
-                map[i][j] = new Vide(this);
-                addEntite(vide,i,j);
+        String carteString ="";
+        try {
+            FileReader fr = new FileReader(carte);
+            BufferedReader br = new BufferedReader(fr);
+            StringBuffer sb = new StringBuffer();
+            String line;
+            while((line = br.readLine()) != null)
+            {
+                // convertir l'entier en char
+                sb.append(line);
             }
-        this.personnage = new Personnage(this);
-        map[3][SIZE_Y-1] = this.personnage;
-        addEntite(this.personnage,3,SIZE_Y-1);
+            carteString = sb.toString();
+            fr.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Entite entite;
+        for(int i = 0; i<carteString.length()/SIZE_X;i++)
+            for(int j = 0; j<carteString.length()/SIZE_Y;j++){
+                System.out.println(carteString.charAt(i*SIZE_X+j));
+                switch (carteString.charAt(i*SIZE_X+j)){
+                    case 'P':
+                        entite = new Platform(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                    case 'H':
+                        entite = new PlatformVertical(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                    case 'B':
+                        entite = new ColoneBas(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                    case 'D':
+                        entite = new PlatformeDroite(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                    case 'G':
+                        entite = new PlatformeGauche(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                    case 'C':
+                        entite = new Corde(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                    case 'M':
+                        entite = new Mur(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                    case 'Z':
+                        addEntite(this.personnage,i,j);
+                        map[i][j] = this.personnage;
+                        break;
+                        //TODO Ajouter le reste au dessus du case:V
+                    case 'V':
+                    default:
+                        entite = new Vide(this);
+                        addEntite(entite,i,j);
+                        map[i][j] = entite;
+                        break;
+                }
+            }
     }
 
     public Boolean deplacerEntite(Entite entite, Direction direction){
@@ -48,22 +113,22 @@ public class Jeu extends Observable implements Runnable {
         int y = entites.get(entite).y;
 
         switch (direction){
-            case Haut: if(y-1>=0 && map[x][y-1].getType() == EntiteType.Vide) {
+            case Gauche: if(y-1>=0 && map[x][y-1].getType() == EntiteType.Vide) {
                 supprimerEntite(entite,x,y);
                 addEntite(entite,x,y-1);
             }break;
 
-            case Bas: if(y+1>=0 && map[x][y+1].getType() == EntiteType.Vide) {
+            case Droite: if(y+1>=0 && map[x][y+1].getType() == EntiteType.Vide) {
                 supprimerEntite(entite,x,y);
                 addEntite(entite,x,y+1);
             }break;
 
-            case Droite: if(x+1>=0 && map[x+1][y].getType() == EntiteType.Vide) {
+            case Bas: if(x+1>=0 && map[x+1][y].getType() == EntiteType.Vide) {
                 supprimerEntite(entite,x,y);
                 addEntite(entite,x+1,y);
             }break;
 
-            case Gauche: if(x-1>=0 && map[x-1][y].getType() == EntiteType.Vide) {
+            case Haut: if(x-1>=0 && map[x-1][y].getType() == EntiteType.Vide) {
                 supprimerEntite(entite,x,y);
                 addEntite(entite,x-1,y);
             }break;

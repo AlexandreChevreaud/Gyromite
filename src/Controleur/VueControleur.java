@@ -52,7 +52,7 @@ public class VueControleur extends JFrame implements Observer {
         recupererImages();
         //update(new Observable(),new Object());
     }
-
+// TODO voir pourquoi c'est pas x,y
     private void ajouterEcouteurClavier() {
         // TODO modifier
         addKeyListener(new KeyAdapter() { // new KeyAdapter() { ... } est une instance de classe anonyme, il s'agit d'un objet qui correspond au controleur dans MVC
@@ -128,11 +128,20 @@ public class VueControleur extends JFrame implements Observer {
 
         Entite[][] entites = this.jeu.getMap();
         for (int i  = 0;i<this.sizeX;i++)
-            for (int j  = 0;j<sizeY;j++){
+            for (int j  = 0;j<this.sizeY;j++){
                 switch (entites[i][j].getType()){
-                    case Vide : tabJLabel[i][j].setIcon(vide); break;
-                    case Personnage: tabJLabel[i][j].setIcon(hero); break;
+                    case Vide : tabJLabel[j][i].setIcon(vide); break;
+                    case Personnage: tabJLabel[j][i].setIcon(hero); break;
+                    case Mur: tabJLabel[j][i].setIcon(mur); break;
+                    case PlatformeDroite: tabJLabel[j][i].setIcon(murGauche); break;
+                    case PlatformeGauche: tabJLabel[j][i].setIcon(murDroite); break;
+                    case PlatformVertical: tabJLabel[j][i].setIcon(platformVertical); break;
+                    case Platform: tabJLabel[j][i].setIcon(platform); break;
+                    case Corde: tabJLabel[j][i].setIcon(corde); break;
+                    case ColoneBas: tabJLabel[j][i].setIcon(tuyauxBleuLargeBasPlatform); break;
                 }
             }
+        
+
     }
 }
