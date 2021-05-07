@@ -55,7 +55,6 @@ public class Jeu extends Observable implements Runnable {
         Entite entite;
         for(int i = 0; i<carteString.length()/SIZE_X;i++)
             for(int j = 0; j<carteString.length()/SIZE_Y;j++){
-                System.out.println(carteString.charAt(i*SIZE_X+j));
                 switch (carteString.charAt(i*SIZE_X+j)){
                     case 'P':
                         entite = new Platform(this);
