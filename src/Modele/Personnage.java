@@ -1,10 +1,13 @@
 package Modele;
 
-public class Personnage {
-    private Jeu jeu;
+public class Personnage extends EntiteDynamique{
 
-    public Personnage(Jeu _jeu) {
-        jeu = _jeu;
+    public Personnage(Jeu jeu) {
+        super(jeu);
     }
 
+    @Override
+    public EntiteType getType() {
+        return EntiteType.Personnage;
+    }
 }

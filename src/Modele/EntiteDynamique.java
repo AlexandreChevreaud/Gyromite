@@ -1,14 +1,15 @@
 package Modele;
 
-public class EntiteDynamique extends Entite{
+public abstract class EntiteDynamique extends Entite{
+
+    public EntiteDynamique(Jeu jeu) {
+        super(jeu);
+    }
+
+    public abstract EntiteType getType();
     @Override
-    public void bouger(Direction direction) {
+    public boolean avancerDirectionChoisie(Direction direction) {
         // TODO Ajouter les mouvements
-        switch(direction){
-            case Bas : break;
-            case Haut: break;
-            case Droite: break;
-            case Gauche: break;
-        }
+        return jeu.deplacerEntite(this, direction);
     }
 }

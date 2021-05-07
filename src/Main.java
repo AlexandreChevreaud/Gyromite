@@ -10,5 +10,7 @@ public class Main {
             e.printStackTrace();
         }
         VueControleur vc = new VueControleur(jeu);
+        jeu.addObserver(vc);
+        jeu.start();
     }
 }
