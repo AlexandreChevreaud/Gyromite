@@ -14,7 +14,6 @@ public class Carte {
 
     public Carte(Jeu jeu) {
         this.jeu = jeu;
-        chargerCarte();
         this.casePrécedente = new Vide(jeu);
     }
 
@@ -47,48 +46,39 @@ public class Carte {
                     case 'P':
                         entite = new Platform(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                     case 'H':
                         entite = new PlatformVertical(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                     case 'B':
                         entite = new ColoneBas(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                     case 'D':
                         entite = new PlatformeDroite(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                     case 'G':
                         entite = new PlatformeGauche(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                     case 'C':
                         entite = new Corde(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                     case 'M':
                         entite = new Mur(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                     case 'Z':
                         addEntite(jeu.getPersonnage(),i,j);
-                        map[i][j] = jeu.getPersonnage();
                         break;
                     //TODO Ajouter le reste au dessus du case:V
                     case 'V':
                     default:
                         entite = new Vide(jeu);
                         addEntite(entite,i,j);
-                        map[i][j] = entite;
                         break;
                 }
             }
@@ -96,14 +86,18 @@ public class Carte {
 
 
 
-    public void addEntite(Entite entite, int x, int y) {
-        map[x][y] = entite;
-        this.entites.put(entite, new Point(x, y));
+    public void addEntite(Entite entite, int y, int x) {
+        map[y][x] = entite;
+        this.entites.put(entite, new Point(y, x));
     }
 
-    public void supprimerEntite(Entite entite, int x, int y){
-        map[x][y] = casePrécedente;
+    public void supprimerEntite(Entite entite, int y, int x){
+        map[y][x] = casePrécedente;
         this.entites.remove(entite);
+    }
+
+    public Entite getEntite(Point point){
+        return map[point.y][point.x];
     }
 
     public HashMap<Entite, Point> getEntites() {

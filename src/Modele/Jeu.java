@@ -56,6 +56,7 @@ public class Jeu extends Observable implements Runnable {
                 Entite casePrecedente = carte.getMap()[x+1][y];
                 carte.supprimerEntite(entite,x,y);
                 carte.addEntite(entite,x+1,y);
+                carte.setCasePrécedente(casePrecedente);
                 deplacer = true;
             }break;
 

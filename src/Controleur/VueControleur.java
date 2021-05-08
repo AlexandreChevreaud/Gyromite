@@ -41,6 +41,7 @@ public class VueControleur extends JFrame implements Observer {
     ImageIcon tuyauxBleuLargeHautCoupe;
     ImageIcon tuyauxBleuLargeBasCoupe;
     ImageIcon hero;
+    ImageIcon heroSurCorde;
 
     public VueControleur(Jeu _jeu){
         sizeX = Jeu.SIZE_X;
@@ -100,6 +101,7 @@ public class VueControleur extends JFrame implements Observer {
             bufferDecors = ImageIO.read(decors);
             bufferPersonnage = ImageIO.read(personnage);
             hero = new ImageIcon(bufferPersonnage.getSubimage(0,0,20,25).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+            heroSurCorde = new ImageIcon(bufferPersonnage.getSubimage(1,52,20,25).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             platform = new ImageIcon(bufferDecors.getSubimage(0,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             corde = new ImageIcon(bufferDecors.getSubimage(16,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             mur = new ImageIcon(bufferDecors.getSubimage(32,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
@@ -121,16 +123,25 @@ public class VueControleur extends JFrame implements Observer {
 
     }
 
+    private void mettreAJourAffichage() {
+
+        //if(jeu.getCarte().getEntites().get(jeu.getPersonnage()))
+
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         // TODO a mieux faire
 
+        mettreAJourAffichage();
+
+        //TODO à mettre dans une méthode d'initialisation
         Entite[][] entites = this.jeu.getCarte().getMap();
         for (int i  = 0;i<this.sizeX;i++)
             for (int j  = 0;j<this.sizeY;j++){
                 switch (entites[i][j].getType()){
                     case Vide : tabJLabel[j][i].setIcon(vide); break;
-                    case Personnage: tabJLabel[j][i].setIcon(hero); break;
+                    case Personnage: tabJLabel[j][i].setIcon(heroSurCorde); break;
                     case Mur: tabJLabel[j][i].setIcon(mur); break;
                     case PlatformeDroite: tabJLabel[j][i].setIcon(murGauche); break;
                     case PlatformeGauche: tabJLabel[j][i].setIcon(murDroite); break;
