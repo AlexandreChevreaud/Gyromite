@@ -125,7 +125,7 @@ public class VueControleur extends JFrame implements Observer {
     public void update(Observable o, Object arg) {
         // TODO a mieux faire
 
-        Entite[][] entites = this.jeu.getMap();
+        Entite[][] entites = this.jeu.getCarte().getMap();
         for (int i  = 0;i<this.sizeX;i++)
             for (int j  = 0;j<this.sizeY;j++){
                 switch (entites[i][j].getType()){
