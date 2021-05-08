@@ -7,12 +7,12 @@ import java.util.Observable;
 //TODO peut être deplacer l'observable
 public class Jeu extends Observable implements Runnable {
 
-    public static final int SIZE_X = 15;
-    public static final int SIZE_Y = 15;
+    public static final int SIZE_X = 16;
+    public static final int SIZE_Y = 16;
     private int pause = 200; // période de rafraichissement
 
-    // TODO never used for now
-    private HashMap<Entite,Point> entites = new HashMap<Entite,Point>();
+
+    private HashMap<Entite,Point> entites = new HashMap<>();
     private Entite[][] map;
 
     private Personnage personnage;
@@ -42,7 +42,6 @@ public class Jeu extends Observable implements Runnable {
             String line;
             while((line = br.readLine()) != null)
             {
-                // convertir l'entier en char
                 sb.append(line);
             }
             carteString = sb.toString();
@@ -53,6 +52,7 @@ public class Jeu extends Observable implements Runnable {
             e.printStackTrace();
         }
         Entite entite;
+        // TODO en lien problème coordonee
         for(int i = 0; i<carteString.length()/SIZE_X;i++)
             for(int j = 0; j<carteString.length()/SIZE_Y;j++){
                 switch (carteString.charAt(i*SIZE_X+j)){
@@ -111,13 +111,14 @@ public class Jeu extends Observable implements Runnable {
         int x = entites.get(entite).x;
         int y = entites.get(entite).y;
 
+        //TODO en lien problème coordonee
         switch (direction){
             case Gauche: if(y-1>=0 && map[x][y-1].getType() == EntiteType.Vide) {
                 supprimerEntite(entite,x,y);
                 addEntite(entite,x,y-1);
             }break;
 
-            case Droite: if(y+1>=0 && map[x][y+1].getType() == EntiteType.Vide) {
+            case Droite: if(y+1>=0 && (map[x][y+1].getType() == EntiteType.Vide || map[x][y+1].getType() == EntiteType.Corde)) {
                 supprimerEntite(entite,x,y);
                 addEntite(entite,x,y+1);
             }break;
@@ -127,7 +128,7 @@ public class Jeu extends Observable implements Runnable {
                 addEntite(entite,x+1,y);
             }break;
 
-            case Haut: if(x-1>=0 && map[x-1][y].getType() == EntiteType.Vide) {
+            case Haut: if(x-1>=0 && (map[x-1][y].getType() == EntiteType.Vide|| map[x-1][y].getType() == EntiteType.Corde)) {
                 supprimerEntite(entite,x,y);
                 addEntite(entite,x-1,y);
             }break;
