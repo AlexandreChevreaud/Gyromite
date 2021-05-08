@@ -10,11 +10,11 @@ public class Carte {
     private HashMap<Entite, Point> entites = new HashMap<>();
     private Entite[][] map;
 
-    private Entite casePrécedente;
+    private Entite caseActuelle;
 
     public Carte(Jeu jeu) {
         this.jeu = jeu;
-        this.casePrécedente = new Vide(jeu);
+        this.caseActuelle = new Vide(jeu);
     }
 
     // TODO à faire, carte de test actuellement
@@ -33,11 +33,10 @@ public class Carte {
             }
             carteString = sb.toString();
             fr.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
         Entite entite;
         // TODO en lien problème coordonee
         for(int i = 0; i<carteString.length()/Jeu.SIZE_X;i++)
@@ -84,20 +83,18 @@ public class Carte {
             }
     }
 
-
-
-    public void addEntite(Entite entite, int y, int x) {
-        map[y][x] = entite;
-        this.entites.put(entite, new Point(y, x));
+    public void addEntite(Entite entite, int x, int y) {
+        map[x][y] = entite;
+        this.entites.put(entite, new Point(x, y));
     }
 
-    public void supprimerEntite(Entite entite, int y, int x){
-        map[y][x] = casePrécedente;
+    public void supprimerEntite(Entite entite, int x, int y){
+        map[x][y] = caseActuelle;
         this.entites.remove(entite);
     }
 
-    public Entite getEntite(Point point){
-        return map[point.y][point.x];
+    public Entite getCaseActuelle() {
+        return caseActuelle;
     }
 
     public HashMap<Entite, Point> getEntites() {
@@ -108,11 +105,7 @@ public class Carte {
         return map;
     }
 
-    public Entite getCasePrécedente() {
-        return casePrécedente;
-    }
-
-    public void setCasePrécedente(Entite casePrécedente) {
-        this.casePrécedente = casePrécedente;
+    public void setCaseActuelle(Entite caseActuelle) {
+        this.caseActuelle = caseActuelle;
     }
 }

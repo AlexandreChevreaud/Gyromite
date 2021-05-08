@@ -1,7 +1,4 @@
 package Modele;
-import java.awt.Point;
-import java.io.*;
-import java.util.HashMap;
 import java.util.Observable;
 
 //TODO peut être deplacer l'observable
@@ -40,7 +37,7 @@ public class Jeu extends Observable implements Runnable {
                 Entite casePrecedente = carte.getMap()[x][y-1];
                 carte.supprimerEntite(entite,x,y);
                 carte.addEntite(entite,x,y-1);
-                carte.setCasePrécedente(casePrecedente);
+                carte.setCaseActuelle(casePrecedente);
                 deplacer = true;
             }break;
 
@@ -48,7 +45,7 @@ public class Jeu extends Observable implements Runnable {
                 Entite casePrecedente = carte.getMap()[x][y+1];
                 carte.supprimerEntite(entite,x,y);
                 carte.addEntite(entite,x,y+1);
-                carte.setCasePrécedente(casePrecedente);
+                carte.setCaseActuelle(casePrecedente);
                 deplacer = true;
             }break;
 
@@ -56,7 +53,7 @@ public class Jeu extends Observable implements Runnable {
                 Entite casePrecedente = carte.getMap()[x+1][y];
                 carte.supprimerEntite(entite,x,y);
                 carte.addEntite(entite,x+1,y);
-                carte.setCasePrécedente(casePrecedente);
+                carte.setCaseActuelle(casePrecedente);
                 deplacer = true;
             }break;
 
@@ -64,7 +61,7 @@ public class Jeu extends Observable implements Runnable {
                 Entite casePrecedente = carte.getMap()[x-1][y];
                 carte.supprimerEntite(entite,x,y);
                 carte.addEntite(entite,x-1,y);
-                carte.setCasePrécedente(casePrecedente);
+                carte.setCaseActuelle(casePrecedente);
                 deplacer = true;
             }break;
 
