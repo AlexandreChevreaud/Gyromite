@@ -94,10 +94,10 @@ public class VueControleur extends JFrame implements Observer {
     private void recupererImages() throws IOException {
         // TODO mettre chemin relatif
         String path = new File(".").getCanonicalPath();
-        String dec = path+"\\Ressources\\Decor.png";
-        System.out.println(dec);
-        File decors = new File(dec);
-        File personnage = new File(path+"Ressources\\Personnage.png");
+
+        File decors = new File(path.replace("\\","\\\\")+"\\Ressources\\Decor.png");
+        File personnage = new File(path.replace("\\","\\\\")+"\\Ressources\\Personnage.png");
+
 
         BufferedImage bufferDecors;
         BufferedImage bufferPersonnage;
