@@ -3,6 +3,7 @@ package Modele;
 import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
+import java.net.URL;
 
 public class Carte {
 
@@ -19,7 +20,7 @@ public class Carte {
 
     // TODO à faire, carte de test actuellement
     public void chargerCarte(){
-        File carte = new File("C:\\Users\\alexa\\IdeaProjects\\Gyromite\\Ressources\\carte.txt");
+        File carte = new File("C:\\Users\\Epulapp\\IdeaProjects\\POO\\Gyromite\\Ressources\\carte.txt");
         map = new Entite[Jeu.SIZE_X][Jeu.SIZE_Y];
         String carteString ="";
         try {

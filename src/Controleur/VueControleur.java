@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -44,7 +45,7 @@ public class VueControleur extends JFrame implements Observer {
     ImageIcon hero;
     ImageIcon heroSurCorde;
 
-    public VueControleur(Jeu _jeu){
+    public VueControleur(Jeu _jeu) throws IOException {
         sizeX = Jeu.SIZE_X;
         sizeY = Jeu.SIZE_Y;
         jeu = _jeu;
@@ -90,10 +91,13 @@ public class VueControleur extends JFrame implements Observer {
         add(grilleJLabels);
     }
 
-    private void recupererImages(){
+    private void recupererImages() throws IOException {
         // TODO mettre chemin relatif
-        File decors = new File("C:\\Users\\alexa\\IdeaProjects\\Gyromite\\Ressources\\Decor.png");
-        File personnage = new File("C:\\Users\\alexa\\IdeaProjects\\Gyromite\\Ressources\\Personnage.png");
+        String path = new File(".").getCanonicalPath();
+        String dec = path+"\\Ressources\\Decor.png";
+        System.out.println(dec);
+        File decors = new File(dec);
+        File personnage = new File(path+"Ressources\\Personnage.png");
 
         BufferedImage bufferDecors;
         BufferedImage bufferPersonnage;

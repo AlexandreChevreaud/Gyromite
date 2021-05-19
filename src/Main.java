@@ -1,8 +1,10 @@
 import Controleur.VueControleur;
 import Modele.Jeu;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Jeu jeu = new Jeu();
         try {
             Thread.sleep(500);
