@@ -3,6 +3,7 @@ package Modele;
 import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
+import java.net.URL;
 
 public class Carte {
 
@@ -18,11 +19,14 @@ public class Carte {
     }
 
     // TODO à faire, carte de test actuellement
-    public void chargerCarte(){
-        File carte = new File("C:\\Users\\alexa\\IdeaProjects\\Gyromite\\Ressources\\carte.txt");
+    public void chargerCarte()  {
+
         map = new Entite[Jeu.SIZE_X][Jeu.SIZE_Y];
         String carteString ="";
         try {
+            String path = new File(".").getCanonicalPath();
+
+            File carte = new File(path.replace("\\","\\\\")+"\\Ressources\\carte.txt");
             FileReader fr = new FileReader(carte);
             BufferedReader br = new BufferedReader(fr);
             StringBuffer sb = new StringBuffer();
