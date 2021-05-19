@@ -51,7 +51,7 @@ public class Carte {
                         addEntite(entite,i,j);
                         break;
                     case 'B':
-                        entite = new ColoneBas(jeu);
+                        entite = new ColoneBasPlatform(jeu);
                         addEntite(entite,i,j);
                         break;
                     case 'D':
@@ -72,6 +72,14 @@ public class Carte {
                         break;
                     case 'Z':
                         addEntite(jeu.getPersonnage(),i,j);
+                        break;
+                    case 'Q':
+                        entite = new Colonne(jeu);
+                        addEntite(entite,i,j);
+                        break;
+                    case 'S':
+                        entite = new ColonneHaut(jeu);
+                        addEntite(entite,i,j);
                         break;
                     //TODO Ajouter le reste au dessus du case:V
                     case 'V':

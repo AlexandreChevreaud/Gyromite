@@ -144,7 +144,9 @@ public class VueControleur extends JFrame implements Observer {
                     case PlatformVertical: tabJLabel[j][i].setIcon(platformVertical); break;
                     case Platform: tabJLabel[j][i].setIcon(platform); break;
                     case Corde: tabJLabel[j][i].setIcon(corde); break;
-                    case ColoneBas: tabJLabel[j][i].setIcon(tuyauxBleuLargeBasPlatform); break;
+                    case ColoneBasPlatform: tabJLabel[j][i].setIcon(tuyauxBleuLargeBasPlatform); break;
+                    case ColonneHaut: tabJLabel[j][i].setIcon(tuyauxBleuLargeHaut); break;
+                    case Colonne: tabJLabel[j][i].setIcon(tuyauxBleu); break;
                 }
             }
     }
