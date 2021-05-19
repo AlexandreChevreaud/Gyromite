@@ -13,7 +13,7 @@ public class Jeu extends Observable implements Runnable {
 
     private Personnage personnage;
 
-    public Jeu() throws IOException {
+    public Jeu()  {
         this.personnage = new Personnage(this);
         carte = new Carte(this);
         carte.chargerCarte();

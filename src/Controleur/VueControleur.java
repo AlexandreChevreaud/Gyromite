@@ -45,7 +45,7 @@ public class VueControleur extends JFrame implements Observer {
     ImageIcon hero;
     ImageIcon heroSurCorde;
 
-    public VueControleur(Jeu _jeu) throws IOException {
+    public VueControleur(Jeu _jeu)  {
         sizeX = Jeu.SIZE_X;
         sizeY = Jeu.SIZE_Y;
         jeu = _jeu;
@@ -91,17 +91,18 @@ public class VueControleur extends JFrame implements Observer {
         add(grilleJLabels);
     }
 
-    private void recupererImages() throws IOException {
+    private void recupererImages()  {
         // TODO mettre chemin relatif
-        String path = new File(".").getCanonicalPath();
-
-        File decors = new File(path.replace("\\","\\\\")+"\\Ressources\\Decor.png");
-        File personnage = new File(path.replace("\\","\\\\")+"\\Ressources\\Personnage.png");
 
 
         BufferedImage bufferDecors;
         BufferedImage bufferPersonnage;
         try {
+            String path = new File(".").getCanonicalPath();
+
+            File decors = new File(path.replace("\\","\\\\")+"\\Ressources\\Decor.png");
+            File personnage = new File(path.replace("\\","\\\\")+"\\Ressources\\Personnage.png");
+
             // TODO HasHmap ? ou un truc du genre
             bufferDecors = ImageIO.read(decors);
             bufferPersonnage = ImageIO.read(personnage);
