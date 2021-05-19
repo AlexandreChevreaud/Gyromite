@@ -1,4 +1,5 @@
 package Modele;
+import java.io.IOException;
 import java.util.Observable;
 
 //TODO peut être deplacer l'observable
@@ -12,7 +13,7 @@ public class Jeu extends Observable implements Runnable {
 
     private Personnage personnage;
 
-    public Jeu() {
+    public Jeu() throws IOException {
         this.personnage = new Personnage(this);
         carte = new Carte(this);
         carte.chargerCarte();

@@ -19,8 +19,10 @@ public class Carte {
     }
 
     // TODO à faire, carte de test actuellement
-    public void chargerCarte(){
-        File carte = new File("C:\\Users\\Epulapp\\IdeaProjects\\POO\\Gyromite\\Ressources\\carte.txt");
+    public void chargerCarte() throws IOException {
+        String path = new File(".").getCanonicalPath();
+
+        File carte = new File(path.replace("\\","\\\\")+"\\Ressources\\carte.txt");
         map = new Entite[Jeu.SIZE_X][Jeu.SIZE_Y];
         String carteString ="";
         try {
