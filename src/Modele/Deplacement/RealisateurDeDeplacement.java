@@ -1,7 +1,7 @@
 package Modele.Deplacement;
 
-import Modele.Direction;
-import Modele.EntiteDynamique;
+import Modele.Plateau.Direction;
+import Modele.Plateau.EntiteDynamique;
 
 import java.util.ArrayList;
 

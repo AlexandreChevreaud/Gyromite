@@ -1,4 +1,4 @@
-package Modele;
+package Modele.Plateau;
 
 public abstract class Entite{
     protected Jeu jeu;

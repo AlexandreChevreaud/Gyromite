@@ -1,9 +1,9 @@
 package Controleur;
 import Modele.Deplacement.Controle4Directions;
-import Modele.Direction;
-import Modele.Entite;
-import Modele.EntiteType;
-import Modele.Jeu;
+import Modele.Plateau.Direction;
+import Modele.Plateau.Entite;
+import Modele.Plateau.EntiteType;
+import Modele.Plateau.Jeu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

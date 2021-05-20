@@ -1,5 +1,5 @@
 import Controleur.VueControleur;
-import Modele.Jeu;
+import Modele.Plateau.Jeu;
 
 
 public class Main {

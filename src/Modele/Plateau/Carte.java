@@ -1,11 +1,10 @@
-package Modele;
+package Modele.Plateau;
 
 import Modele.Deplacement.Controle4Directions;
 
 import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
-import java.net.URL;
 
 public class Carte {
 

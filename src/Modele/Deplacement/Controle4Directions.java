@@ -1,6 +1,7 @@
 package Modele.Deplacement;
 
-import Modele.*;
+import Modele.Plateau.Direction;
+import Modele.Plateau.EntiteDynamique;
 
 public class Controle4Directions extends RealisateurDeDeplacement{
     private static Direction directionCourante;

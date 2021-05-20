@@ -1,4 +1,4 @@
-package Modele;
+package Modele.Plateau;
 
 public class Radis extends EntiteStatic{
     public Radis(Jeu jeu) {

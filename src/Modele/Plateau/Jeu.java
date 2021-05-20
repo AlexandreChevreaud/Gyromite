@@ -1,4 +1,4 @@
-package Modele;
+package Modele.Plateau;
 import Modele.Deplacement.Ordonnanceur;
 
 //TODO peut être deplacer l'observable

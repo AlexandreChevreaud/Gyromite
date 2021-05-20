@@ -1,6 +1,6 @@
 package Modele.Deplacement;
 
-import Modele.Jeu;
+import Modele.Plateau.Jeu;
 
 import java.util.ArrayList;
 import java.util.Observable;

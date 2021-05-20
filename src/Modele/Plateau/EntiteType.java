@@ -1,4 +1,4 @@
-package Modele;
+package Modele.Plateau;
 
 public enum EntiteType {
     Vide,
