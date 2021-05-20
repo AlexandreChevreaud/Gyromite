@@ -1,17 +1,18 @@
 package Modele;
-import java.io.IOException;
-import java.util.Observable;
+import Modele.Deplacement.Ordonnanceur;
 
 //TODO peut être deplacer l'observable
-public class Jeu extends Observable implements Runnable {
+public class Jeu {
 
     public static final int SIZE_X = 16;
     public static final int SIZE_Y = 16;
-    private int pause = 200; // période de rafraichissement
+
+    private boolean isGameWin = false;
 
     private Carte carte;
-
     private Personnage personnage;
+
+    private Ordonnanceur ordonnanceur = new Ordonnanceur(this);
 
     public Jeu()  {
         this.personnage = new Personnage(this);
@@ -28,11 +29,9 @@ public class Jeu extends Observable implements Runnable {
     }
 
     public Boolean deplacerEntite(Entite entite, Direction direction){
-        //TODO à faire
         int x = carte.getEntites().get(entite).x;
         int y = carte.getEntites().get(entite).y;
         Boolean deplacer = false;
-        //TODO en lien problème coordonee
         switch (direction){
             case Gauche: if(y-1>=0 && (carte.getMap()[x][y-1].getType() == EntiteType.Vide || carte.getMap()[x][y-1].getType() == EntiteType.Corde || carte.getMap()[x][y-1].getType() != EntiteType.Radis)) {
                 Entite caseActuelle;
@@ -78,22 +77,14 @@ public class Jeu extends Observable implements Runnable {
         return deplacer;
     }
 
-    public void start() {
-        new Thread(this).start();
+    public void start(long pause) {
+        ordonnanceur.start(pause);
     }
-    @Override
-    public void run() {
-        while(true) {
 
-            setChanged();
-            notifyObservers();
-
-            try {
-                Thread.sleep(pause);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        }
+    public boolean isGameWin() {
+        return isGameWin;
+    }
+    public Ordonnanceur getOrdonnanceur() {
+        return ordonnanceur;
     }
 }

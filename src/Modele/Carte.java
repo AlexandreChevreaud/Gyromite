@@ -1,5 +1,7 @@
 package Modele;
 
+import Modele.Deplacement.Controle4Directions;
+
 import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
@@ -76,6 +78,10 @@ public class Carte {
                         break;
                     case 'Z':
                         addEntite(jeu.getPersonnage(),i,j);
+                        Controle4Directions.getInstance().addEntiteDynamique(jeu.getPersonnage());
+                        jeu.getOrdonnanceur().add(Controle4Directions.getInstance());
+                        //ControleInteraction.getInstance().addEntiteDynamique(jeu.getPersonnage());
+                        //jeu.getOrdonnanceur().add(ControleInteraction.getInstance());
                         break;
                     case 'Q':
                         entite = new Colonne(jeu);
