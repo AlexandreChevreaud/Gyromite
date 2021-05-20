@@ -42,11 +42,15 @@ public class Jeu extends Observable implements Runnable {
                 deplacer = true;
             }break;
 
-            case Droite: if(y+1>=0 && (carte.getMap()[x][y+1].getType() == EntiteType.Vide || carte.getMap()[x][y+1].getType() == EntiteType.Corde)) {
-                Entite casePrecedente = carte.getMap()[x][y+1];
+            case Droite: if(y+1>=0 && (carte.getMap()[x][y+1].getType() == EntiteType.Vide || carte.getMap()[x][y+1].getType() == EntiteType.Corde || carte.getMap()[x][y+1].getType() == EntiteType.Radis)) {
+                Entite caseActuelle;
+                if(carte.getMap()[x][y+1].getType() != EntiteType.Radis)
+                    caseActuelle = carte.getMap()[x][y+1];
+                else
+                    caseActuelle = new Vide(this);
                 carte.supprimerEntite(entite,x,y);
                 carte.addEntite(entite,x,y+1);
-                carte.setCaseActuelle(casePrecedente);
+                carte.setCaseActuelle(caseActuelle);
                 deplacer = true;
             }break;
 

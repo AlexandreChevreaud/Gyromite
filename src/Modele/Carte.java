@@ -85,6 +85,10 @@ public class Carte {
                         entite = new ColonneHaut(jeu);
                         addEntite(entite,i,j);
                         break;
+                    case 'R':
+                        entite = new Radis(jeu);
+                        addEntite(entite,i,j);
+                        break;
                     //TODO Ajouter le reste au dessus du case:V
                     case 'V':
                     default:

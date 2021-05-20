@@ -11,5 +11,6 @@ public enum EntiteType {
     ColoneBasPlatform,
     Mur,
     Colonne,
-    ColonneHaut
+    ColonneHaut,
+    Radis
 }

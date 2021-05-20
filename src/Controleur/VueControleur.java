@@ -12,7 +12,6 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -44,6 +43,8 @@ public class VueControleur extends JFrame implements Observer {
     ImageIcon tuyauxBleuLargeBasCoupe;
     ImageIcon hero;
     ImageIcon heroSurCorde;
+    ImageIcon radis;
+
 
     public VueControleur(Jeu _jeu)  {
         sizeX = Jeu.SIZE_X;
@@ -92,9 +93,6 @@ public class VueControleur extends JFrame implements Observer {
     }
 
     private void recupererImages()  {
-        // TODO mettre chemin relatif
-
-
         BufferedImage bufferDecors;
         BufferedImage bufferPersonnage;
         try {
@@ -108,6 +106,7 @@ public class VueControleur extends JFrame implements Observer {
             bufferPersonnage = ImageIO.read(personnage);
             hero = new ImageIcon(bufferPersonnage.getSubimage(0,0,20,25).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             heroSurCorde = new ImageIcon(bufferPersonnage.getSubimage(1,52,20,25).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+            radis = new ImageIcon(bufferPersonnage.getSubimage(72,255,13,14).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             platform = new ImageIcon(bufferDecors.getSubimage(0,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             corde = new ImageIcon(bufferDecors.getSubimage(16,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             mur = new ImageIcon(bufferDecors.getSubimage(32,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
@@ -152,7 +151,9 @@ public class VueControleur extends JFrame implements Observer {
                     case ColoneBasPlatform: tabJLabel[j][i].setIcon(tuyauxBleuLargeBasPlatform); break;
                     case ColonneHaut: tabJLabel[j][i].setIcon(tuyauxBleuLargeHaut); break;
                     case Colonne: tabJLabel[j][i].setIcon(tuyauxBleu); break;
+                    case Radis: tabJLabel[j][i].setIcon(radis); break;
                 }
+
             }
     }
 
