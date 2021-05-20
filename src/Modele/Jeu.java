@@ -34,7 +34,7 @@ public class Jeu extends Observable implements Runnable {
         Boolean deplacer = false;
         //TODO en lien problème coordonee
         switch (direction){
-            case Gauche: if(y-1>=0 && (carte.getMap()[x][y-1].getType() == EntiteType.Vide || carte.getMap()[x][y-1].getType() == EntiteType.Corde)) {
+            case Gauche: if(y-1>=0 && (carte.getMap()[x][y-1].getType() == EntiteType.Vide || carte.getMap()[x][y-1].getType() == EntiteType.Corde || carte.getMap()[x][y-1].getType() != EntiteType.Radis)) {
                 Entite caseActuelle;
                 if(carte.getMap()[x][y-1].getType() != EntiteType.Radis)
                     caseActuelle = carte.getMap()[x][y-1];
