@@ -6,7 +6,7 @@ import java.util.Observable;
 public class Jeu extends Observable implements Runnable {
 
     public static final int SIZE_X = 16;
-    public static final int SIZE_Y = 16;
+    public static final int SIZE_Y = 14;
     private int pause = 200; // période de rafraichissement
 
     private Carte carte;
