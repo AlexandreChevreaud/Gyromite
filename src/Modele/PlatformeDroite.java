@@ -1,4 +1,4 @@
-package Modele.Plateau;
+package Modele;
 
 public class PlatformeDroite extends EntiteStatic{
     public PlatformeDroite(Jeu jeu) {

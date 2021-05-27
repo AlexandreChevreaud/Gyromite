@@ -1,4 +1,4 @@
-package Modele.Plateau;
+package Modele;
 
 public class Mur extends EntiteStatic{
     public Mur(Jeu jeu) {
