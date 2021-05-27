@@ -1,4 +1,4 @@
-package Modele.Plateau;
+package Modele;
 
 public class ColonneHaut extends EntiteDynamique{
     public ColonneHaut(Jeu jeu) {
