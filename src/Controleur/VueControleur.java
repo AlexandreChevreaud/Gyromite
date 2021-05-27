@@ -1,8 +1,9 @@
 package Controleur;
-import Modele.Direction;
-import Modele.Entite;
-import Modele.EntiteType;
-import Modele.Jeu;
+import Modele.Deplacement.Controle4Directions;
+import Modele.Plateau.Direction;
+import Modele.Plateau.Entite;
+import Modele.Plateau.EntiteType;
+import Modele.Plateau.Jeu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -62,10 +63,10 @@ public class VueControleur extends JFrame implements Observer {
             @Override
             public void keyPressed(KeyEvent e) {
                 switch(e.getKeyCode()) {  // on regarde quelle touche a été pressée
-                    case KeyEvent.VK_LEFT : jeu.getPersonnage().avancerDirectionChoisie(Direction.Gauche); break;
-                    case KeyEvent.VK_RIGHT : jeu.getPersonnage().avancerDirectionChoisie(Direction.Droite);break;
-                    case KeyEvent.VK_DOWN : jeu.getPersonnage().avancerDirectionChoisie(Direction.Bas); break;
-                    case KeyEvent.VK_UP : jeu.getPersonnage().avancerDirectionChoisie(Direction.Haut); break;
+                    case KeyEvent.VK_LEFT : Controle4Directions.getInstance().setDirectionCourante(Direction.Gauche); break;
+                    case KeyEvent.VK_RIGHT :  Controle4Directions.getInstance().setDirectionCourante(Direction.Droite);break;
+                    case KeyEvent.VK_DOWN :  Controle4Directions.getInstance().setDirectionCourante(Direction.Bas); break;
+                    case KeyEvent.VK_UP :  Controle4Directions.getInstance().setDirectionCourante(Direction.Haut); break;
                 }
             }
         });
