@@ -1,4 +1,4 @@
-package Modele.Plateau;
+package Modele;
 
 public enum Direction {
     Haut,

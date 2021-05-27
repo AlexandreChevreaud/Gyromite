@@ -1,4 +1,4 @@
-package Modele.Plateau;
+package Modele;
 
 public abstract class EntiteStatic extends Entite{
 
