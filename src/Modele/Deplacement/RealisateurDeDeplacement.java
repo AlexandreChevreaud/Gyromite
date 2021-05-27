@@ -12,9 +12,7 @@ public abstract class RealisateurDeDeplacement {
     public void addEntiteDynamique(EntiteDynamique entite) {
         lstEntitesDynamiques.add(entite);
     };
-//    public void removeEntiteDynamique(EntiteDynamique entite) {
-//        lstEntitesDynamiques.remove(entite);
-//    };
+
 
     public abstract void setDirectionCourante(Direction direction);
 }

@@ -47,58 +47,57 @@ public class Carte {
         for(int i = 0; i<Jeu.SIZE_Y;i++)
             for(int j = 0; j<Jeu.SIZE_X;j++){
                 int z = carteString.charAt(i*Jeu.SIZE_X+j);
-                switch (z){
-                    case 'P':
+                switch (z) {
+                    case 'P' -> {
                         entite = new Platform(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'H':
+                        addEntite(entite, i, j);
+                    }
+                    case 'H' -> {
                         entite = new PlatformVertical(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'B':
+                        addEntite(entite, i, j);
+                    }
+                    case 'B' -> {
                         entite = new ColoneBasPlatform(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'D':
+                        addEntite(entite, i, j);
+                    }
+                    case 'D' -> {
                         entite = new PlatformeDroite(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'G':
+                        addEntite(entite, i, j);
+                    }
+                    case 'G' -> {
                         entite = new PlatformeGauche(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'C':
+                        addEntite(entite, i, j);
+                    }
+                    case 'C' -> {
                         entite = new Corde(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'M':
+                        addEntite(entite, i, j);
+                    }
+                    case 'M' -> {
                         entite = new Mur(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'Z':
-                        addEntite(jeu.getPersonnage(),i,j);
+                        addEntite(entite, i, j);
+                    }
+                    case 'Z' -> {
+                        addEntite(jeu.getPersonnage(), i, j);
                         Controle4Directions.getInstance().addEntiteDynamique(jeu.getPersonnage());
                         jeu.getOrdonnanceur().add(Controle4Directions.getInstance());
-                        break;
-                    case 'Q':
+                    }
+                    case 'Q' -> {
                         entite = new Colonne(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'S':
+                        Modele.Deplacement.Colonne.getInstance().addEntiteDynamique((EntiteDynamique)entite);
+                        addEntite(entite, i, j);
+                    }
+                    case 'S' -> {
                         entite = new ColonneHaut(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    case 'R':
+                        addEntite(entite, i, j);
+                    }
+                    case 'R' -> {
                         entite = new Radis(jeu);
-                        addEntite(entite,i,j);
-                        break;
-                    //TODO Ajouter le reste au dessus du case:V
-                    case 'V':
-                    default:
+                        addEntite(entite, i, j);
+                    }
+                    default -> {
                         entite = new Vide(jeu);
-                        addEntite(entite,i,j);
-                        break;
+                        addEntite(entite, i, j);
+                    }
                 }
             }
 
