@@ -5,7 +5,6 @@ import Modele.Plateau.EntiteDynamique;
 
 public class Controle4Directions extends RealisateurDeDeplacement{
     private static Direction directionCourante;
-    //private static Direction lastDirection;
     private static Controle4Directions controle4Directions;
 
     @Override

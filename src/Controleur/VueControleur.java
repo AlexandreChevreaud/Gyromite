@@ -1,10 +1,7 @@
 package Controleur;
 import Modele.Deplacement.Colonne;
 import Modele.Deplacement.Controle4Directions;
-import Modele.Plateau.Direction;
-import Modele.Plateau.Entite;
-import Modele.Plateau.EntiteType;
-import Modele.Plateau.Jeu;
+import Modele.Plateau.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -35,12 +32,12 @@ public class VueControleur extends JFrame implements Observer {
     ImageIcon murGauche;
     ImageIcon murDroite;
     ImageIcon platformVertical;
-    ImageIcon tuyauxBleuLargeHautPlatform;
-    ImageIcon tuyauxBleuLargeHaut;
+    ImageIcon tuyauxBleuHautPlatform;
+    ImageIcon tuyauxBleuHaut;
     ImageIcon tuyauxBleu;
     ImageIcon tuyauxBleuPlatform;
-    ImageIcon tuyauxBleuLargeBasPlatform;
-    ImageIcon tuyauxBleuLargeBas;
+    ImageIcon tuyauxBleuBasPlatform;
+    ImageIcon tuyauxBleuBas;
     ImageIcon tuyauxBleuLargeHautCoupe;
     ImageIcon tuyauxBleuLargeBasCoupe;
     ImageIcon hero;
@@ -118,12 +115,12 @@ public class VueControleur extends JFrame implements Observer {
             platformVertical = new ImageIcon(bufferDecors.getSubimage(0,16,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             murGauche = new ImageIcon(bufferDecors.getSubimage(16,16,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             murDroite = new ImageIcon(bufferDecors.getSubimage(32,16,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
-            tuyauxBleuLargeHautPlatform = new ImageIcon(bufferDecors.getSubimage(0,32,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+            tuyauxBleuHautPlatform = new ImageIcon(bufferDecors.getSubimage(0,32,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             tuyauxBleuPlatform = new ImageIcon(bufferDecors.getSubimage(16,32,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
-            tuyauxBleuLargeBasPlatform = new ImageIcon(bufferDecors.getSubimage(32,32,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
-            tuyauxBleuLargeHaut = new ImageIcon(bufferDecors.getSubimage(0,48,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+            tuyauxBleuBasPlatform = new ImageIcon(bufferDecors.getSubimage(32,32,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+            tuyauxBleuHaut = new ImageIcon(bufferDecors.getSubimage(0,48,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             tuyauxBleu = new ImageIcon(bufferDecors.getSubimage(16,48,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
-            tuyauxBleuLargeBas = new ImageIcon(bufferDecors.getSubimage(32,48,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+            tuyauxBleuBas = new ImageIcon(bufferDecors.getSubimage(32,48,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             tuyauxBleuLargeHautCoupe = new ImageIcon(bufferDecors.getSubimage(48,48,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             tuyauxBleuLargeBasCoupe = new ImageIcon(bufferDecors.getSubimage(64,48,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
         } catch (IOException e) {
@@ -152,8 +149,18 @@ public class VueControleur extends JFrame implements Observer {
                     case PlatformVertical: tabJLabel[i][j].setIcon(platformVertical); break;
                     case Platform: tabJLabel[i][j].setIcon(platform); break;
                     case Corde: tabJLabel[i][j].setIcon(corde); break;
-                    case ColoneBasPlatform: tabJLabel[i][j].setIcon(tuyauxBleuLargeBasPlatform); break;
-                    case ColonneHaut: tabJLabel[i][j].setIcon(tuyauxBleuLargeHaut); break;
+                    case ColoneBas:
+                        if(((ColonneBas)entites[i][j]).isPlatform())
+                            tabJLabel[i][j].setIcon(tuyauxBleuBasPlatform);
+                        else
+                            tabJLabel[i][j].setIcon(tuyauxBleuBas);
+                        break;
+                    case ColonneHaut:
+                        if(((ColonneHaut)entites[i][j]).isPlatform())
+                            tabJLabel[i][j].setIcon(tuyauxBleuHautPlatform);
+                        else
+                            tabJLabel[i][j].setIcon(tuyauxBleuHaut);
+                        break;
                     case Colonne: tabJLabel[i][j].setIcon(tuyauxBleu); break;
                     case Radis: tabJLabel[i][j].setIcon(radis); break;
                 }

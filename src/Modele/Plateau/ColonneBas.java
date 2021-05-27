@@ -1,15 +1,16 @@
 package Modele.Plateau;
 
-public class ColonneHaut extends EntiteDynamique implements ColonneExtremite{
+public class ColonneBas extends EntiteDynamique implements ColonneExtremite{
 
-    public ColonneHaut(Jeu jeu) {
+    private Boolean isPlatform = false;
+
+    public ColonneBas(Jeu jeu) {
         super(jeu);
     }
-    private Boolean isPlatform = false;
 
     @Override
     public EntiteType getType() {
-        return EntiteType.ColonneHaut;
+        return EntiteType.ColoneBas;
     }
 
     @Override
@@ -21,5 +22,4 @@ public class ColonneHaut extends EntiteDynamique implements ColonneExtremite{
     public void setIsPlatform(boolean isPlatform) {
         this.isPlatform = isPlatform;
     }
-
 }

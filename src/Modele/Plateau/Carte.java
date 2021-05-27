@@ -57,8 +57,10 @@ public class Carte {
                         addEntite(entite, i, j);
                     }
                     case 'B' -> {
-                        entite = new ColoneBasPlatform(jeu);
-                        addEntite(entite, i, j);
+                        ColonneBas col = new ColonneBas(jeu);
+                        col.setIsPlatform(true);
+                        Modele.Deplacement.Colonne.getInstance().addEntiteDynamique(col);
+                        addEntite(col, i, j);
                     }
                     case 'D' -> {
                         entite = new PlatformeDroite(jeu);
@@ -88,6 +90,7 @@ public class Carte {
                     }
                     case 'S' -> {
                         entite = new ColonneHaut(jeu);
+                        Modele.Deplacement.Colonne.getInstance().addEntiteDynamique((EntiteDynamique)entite);
                         addEntite(entite, i, j);
                     }
                     case 'R' -> {
@@ -110,6 +113,11 @@ public class Carte {
 
     public void supprimerEntite(Entite entite, int x, int y){
         map[x][y] = caseActuelle;
+        this.entites.remove(entite);
+    }
+
+    public void supprimerEntiteVide(Entite entite, int x, int y){
+        map[x][y] = new Vide(jeu);
         this.entites.remove(entite);
     }
 

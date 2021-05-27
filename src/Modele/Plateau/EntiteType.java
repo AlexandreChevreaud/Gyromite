@@ -8,7 +8,7 @@ public enum EntiteType {
     Corde,
     PlatformeDroite,
     PlatformeGauche,
-    ColoneBasPlatform,
+    ColoneBas,
     Mur,
     Colonne,
     ColonneHaut,
