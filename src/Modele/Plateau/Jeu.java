@@ -5,7 +5,7 @@ import Modele.Deplacement.Ordonnanceur;
 public class Jeu {
 
     public static final int SIZE_X = 16;
-    public static final int SIZE_Y = 16;
+    public static final int SIZE_Y = 14;
 
     private boolean isGameWin = false;
 
