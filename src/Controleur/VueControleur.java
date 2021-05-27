@@ -46,6 +46,7 @@ public class VueControleur extends JFrame implements Observer {
     ImageIcon hero;
     ImageIcon heroSurCorde;
     ImageIcon radis;
+    ImageIcon ennemi;
 
 
     public VueControleur(Jeu _jeu)  {
@@ -111,6 +112,8 @@ public class VueControleur extends JFrame implements Observer {
             hero = new ImageIcon(bufferPersonnage.getSubimage(0,0,20,25).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             heroSurCorde = new ImageIcon(bufferPersonnage.getSubimage(1,52,20,25).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             radis = new ImageIcon(bufferPersonnage.getSubimage(72,255,13,14).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+            ennemi = new ImageIcon(bufferPersonnage.getSubimage(3,138,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
+
             platform = new ImageIcon(bufferDecors.getSubimage(0,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             corde = new ImageIcon(bufferDecors.getSubimage(16,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
             mur = new ImageIcon(bufferDecors.getSubimage(32,0,16,16).getScaledInstance(TAILLE_IMG, TAILLE_IMG,java.awt.Image.SCALE_SMOOTH));
@@ -156,6 +159,7 @@ public class VueControleur extends JFrame implements Observer {
                     case ColonneHaut: tabJLabel[i][j].setIcon(tuyauxBleuLargeHaut); break;
                     case Colonne: tabJLabel[i][j].setIcon(tuyauxBleu); break;
                     case Radis: tabJLabel[i][j].setIcon(radis); break;
+                    case Ennemi: tabJLabel[i][j].setIcon(ennemi); break;
                 }
 
             }

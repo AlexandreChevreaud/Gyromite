@@ -1,7 +1,6 @@
 package Modele.Plateau;
 
 import Modele.Deplacement.Controle4Directions;
-
 import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
@@ -92,6 +91,11 @@ public class Carte {
                     }
                     case 'R' -> {
                         entite = new Radis(jeu);
+                        addEntite(entite, i, j);
+                    }
+                    case 'E' -> {
+                        entite = new Ennemi(jeu);
+                        Modele.Deplacement.Ennemi.getInstance().addEntiteDynamique((EntiteDynamique)entite);
                         addEntite(entite, i, j);
                     }
                     default -> {

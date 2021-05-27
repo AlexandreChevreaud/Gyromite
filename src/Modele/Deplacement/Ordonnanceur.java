@@ -15,9 +15,6 @@ public class Ordonnanceur extends Observable implements Runnable{
         lstDeplacements.add(deplacement);
     }
 
-//    public void clear() {
-//        lstDeplacements.clear();
-//    }
 
     public void start(long _pause) {
         pause = _pause;

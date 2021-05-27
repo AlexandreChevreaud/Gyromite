@@ -1,5 +1,6 @@
 package Modele.Plateau;
 import Modele.Deplacement.Colonne;
+import Modele.Deplacement.Ennemi;
 import Modele.Deplacement.Ordonnanceur;
 
 //TODO peut être deplacer l'observable
@@ -20,6 +21,7 @@ public class Jeu {
         carte = new Carte(this);
         carte.chargerCarte();
         getOrdonnanceur().add(Colonne.getInstance());
+//        getOrdonnanceur().add(Ennemi.getInstance());
     }
 
     public Personnage getPersonnage() {

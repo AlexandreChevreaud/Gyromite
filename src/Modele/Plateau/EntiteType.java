@@ -12,5 +12,6 @@ public enum EntiteType {
     Mur,
     Colonne,
     ColonneHaut,
-    Radis
+    Radis,
+    Ennemi;
 }
