@@ -1,6 +1,7 @@
 import Controleur.VueControleur;
-import Modele.Plateau.Jeu;
+import Modele.Jeu;
 
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args)  {
@@ -11,7 +12,7 @@ public class Main {
             e.printStackTrace();
         }
         VueControleur vc = new VueControleur(jeu);
-        jeu.getOrdonnanceur().addObserver(vc);
-        jeu.start(200);
+        jeu.addObserver(vc);
+        jeu.start();
     }
 }

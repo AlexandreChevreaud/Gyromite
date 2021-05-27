@@ -1,4 +1,4 @@
-package Modele.Plateau;
+package Modele;
 
 public class Corde extends EntiteStatic {
     public Corde(Jeu jeu) {

@@ -1,10 +1,9 @@
-package Modele.Plateau;
-
-import Modele.Deplacement.Controle4Directions;
+package Modele;
 
 import java.awt.*;
 import java.io.*;
 import java.util.HashMap;
+import java.net.URL;
 
 public class Carte {
 
@@ -22,7 +21,7 @@ public class Carte {
     // TODO à faire, carte de test actuellement
     public void chargerCarte()  {
 
-        map = new Entite[Jeu.SIZE_X][Jeu.SIZE_Y];
+        map = new Entite[Jeu.SIZE_Y][Jeu.SIZE_X];
         String carteString ="";
         try {
             String path = new File(".").getCanonicalPath();
@@ -44,9 +43,10 @@ public class Carte {
         
         Entite entite;
         // TODO en lien problème coordonee
-        for(int i = 0; i<carteString.length()/Jeu.SIZE_X;i++)
-            for(int j = 0; j<carteString.length()/Jeu.SIZE_Y;j++){
-                switch (carteString.charAt(i*Jeu.SIZE_X+j)){
+        for(int i = 0; i<Jeu.SIZE_Y;i++)
+            for(int j = 0; j<Jeu.SIZE_X;j++){
+                int z = carteString.charAt(i*Jeu.SIZE_X+j);
+                switch (z){
                     case 'P':
                         entite = new Platform(jeu);
                         addEntite(entite,i,j);
@@ -77,8 +77,6 @@ public class Carte {
                         break;
                     case 'Z':
                         addEntite(jeu.getPersonnage(),i,j);
-                        Controle4Directions.getInstance().addEntiteDynamique(jeu.getPersonnage());
-                        jeu.getOrdonnanceur().add(Controle4Directions.getInstance());
                         break;
                     case 'Q':
                         entite = new Colonne(jeu);
@@ -100,6 +98,7 @@ public class Carte {
                         break;
                 }
             }
+
     }
 
     public void addEntite(Entite entite, int x, int y) {

@@ -1,4 +1,4 @@
-package Modele.Plateau;
+package Modele;
 
 public abstract class EntiteDynamique extends Entite{
 
