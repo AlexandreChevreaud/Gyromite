@@ -1,4 +1,5 @@
 package Controleur;
+import Modele.Deplacement.Colonne;
 import Modele.Deplacement.Controle4Directions;
 import Modele.Plateau.Direction;
 import Modele.Plateau.Entite;
@@ -62,11 +63,13 @@ public class VueControleur extends JFrame implements Observer {
         addKeyListener(new KeyAdapter() { // new KeyAdapter() { ... } est une instance de classe anonyme, il s'agit d'un objet qui correspond au controleur dans MVC
             @Override
             public void keyPressed(KeyEvent e) {
-                switch(e.getKeyCode()) {  // on regarde quelle touche a été pressée
-                    case KeyEvent.VK_LEFT : Controle4Directions.getInstance().setDirectionCourante(Direction.Gauche); break;
-                    case KeyEvent.VK_RIGHT :  Controle4Directions.getInstance().setDirectionCourante(Direction.Droite);break;
-                    case KeyEvent.VK_DOWN :  Controle4Directions.getInstance().setDirectionCourante(Direction.Bas); break;
-                    case KeyEvent.VK_UP :  Controle4Directions.getInstance().setDirectionCourante(Direction.Haut); break;
+                switch (e.getKeyCode()) {  // on regarde quelle touche a été pressée
+                    case KeyEvent.VK_LEFT -> Controle4Directions.getInstance().setDirectionCourante(Direction.Gauche);
+                    case KeyEvent.VK_RIGHT -> Controle4Directions.getInstance().setDirectionCourante(Direction.Droite);
+                    case KeyEvent.VK_DOWN -> Controle4Directions.getInstance().setDirectionCourante(Direction.Bas);
+                    case KeyEvent.VK_UP -> Controle4Directions.getInstance().setDirectionCourante(Direction.Haut);
+                    case KeyEvent.VK_SPACE -> Colonne.getInstance().setDirectionCourante(Direction.Bas);
+                    case KeyEvent.VK_A -> Colonne.getInstance().setDirectionCourante(Direction.Haut);
                 }
             }
         });
@@ -79,14 +82,14 @@ public class VueControleur extends JFrame implements Observer {
         setVisible(true);
         setResizable(false);
 
-        JComponent grilleJLabels = new JPanel(new GridLayout(sizeY, sizeX+1));
+        JComponent grilleJLabels = new JPanel(new GridLayout(sizeY, sizeX));
 
-        tabJLabel = new JLabel[sizeX][sizeY];
+        tabJLabel = new JLabel[sizeY][sizeX];
 
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
                 JLabel jlab = new JLabel();
-                tabJLabel[x][y] = jlab;
+                tabJLabel[y][x] = jlab;
                 grilleJLabels.add(jlab);
             }
         }
@@ -132,27 +135,27 @@ public class VueControleur extends JFrame implements Observer {
     private void mettreAJourAffichage() {
 
         Entite[][] entites = this.jeu.getCarte().getMap();
-        for (int i  = 0;i<this.sizeX;i++)
-            for (int j  = 0;j<this.sizeY;j++){
+        for (int i  = 0;i<this.sizeY;i++)
+            for (int j  = 0;j<this.sizeX;j++){
                 switch (entites[i][j].getType()){
-                    case Vide : tabJLabel[j][i].setIcon(vide); break;
+                    case Vide : tabJLabel[i][j].setIcon(vide); break;
                     case Personnage:
                         if (jeu.getCarte().getCaseActuelle().getType() == EntiteType.Corde) {
-                            tabJLabel[j][i].setIcon(heroSurCorde);
+                            tabJLabel[i][j].setIcon(heroSurCorde);
                         } else {
-                            tabJLabel[j][i].setIcon(hero);
+                            tabJLabel[i][j].setIcon(hero);
                         }
                         break;
-                    case Mur: tabJLabel[j][i].setIcon(mur); break;
-                    case PlatformeDroite: tabJLabel[j][i].setIcon(murGauche); break;
-                    case PlatformeGauche: tabJLabel[j][i].setIcon(murDroite); break;
-                    case PlatformVertical: tabJLabel[j][i].setIcon(platformVertical); break;
-                    case Platform: tabJLabel[j][i].setIcon(platform); break;
-                    case Corde: tabJLabel[j][i].setIcon(corde); break;
-                    case ColoneBasPlatform: tabJLabel[j][i].setIcon(tuyauxBleuLargeBasPlatform); break;
-                    case ColonneHaut: tabJLabel[j][i].setIcon(tuyauxBleuLargeHaut); break;
-                    case Colonne: tabJLabel[j][i].setIcon(tuyauxBleu); break;
-                    case Radis: tabJLabel[j][i].setIcon(radis); break;
+                    case Mur: tabJLabel[i][j].setIcon(mur); break;
+                    case PlatformeDroite: tabJLabel[i][j].setIcon(murGauche); break;
+                    case PlatformeGauche: tabJLabel[i][j].setIcon(murDroite); break;
+                    case PlatformVertical: tabJLabel[i][j].setIcon(platformVertical); break;
+                    case Platform: tabJLabel[i][j].setIcon(platform); break;
+                    case Corde: tabJLabel[i][j].setIcon(corde); break;
+                    case ColoneBasPlatform: tabJLabel[i][j].setIcon(tuyauxBleuLargeBasPlatform); break;
+                    case ColonneHaut: tabJLabel[i][j].setIcon(tuyauxBleuLargeHaut); break;
+                    case Colonne: tabJLabel[i][j].setIcon(tuyauxBleu); break;
+                    case Radis: tabJLabel[i][j].setIcon(radis); break;
                 }
 
             }
