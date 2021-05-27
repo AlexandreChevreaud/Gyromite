@@ -79,8 +79,6 @@ public class Carte {
                         addEntite(jeu.getPersonnage(),i,j);
                         Controle4Directions.getInstance().addEntiteDynamique(jeu.getPersonnage());
                         jeu.getOrdonnanceur().add(Controle4Directions.getInstance());
-                        //ControleInteraction.getInstance().addEntiteDynamique(jeu.getPersonnage());
-                        //jeu.getOrdonnanceur().add(ControleInteraction.getInstance());
                         break;
                     case 'Q':
                         entite = new Colonne(jeu);

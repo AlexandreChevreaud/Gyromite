@@ -37,6 +37,8 @@ public class Ordonnanceur extends Observable implements Runnable{
     @Override
     public void run() {
         boolean doitUpdate = false;
+        setChanged();
+        notifyObservers();
         while (!jeu.isGameWin()){
             for (int i = 0; i < lstDeplacements.size(); i++) {
                 RealisateurDeDeplacement d = lstDeplacements.get(i);
